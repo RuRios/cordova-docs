@@ -1,0 +1,5 @@
+baseurl: "/use-the-force-luke"
+destination: build-prod
+exclude:
+    - static/css-src
+    - static/plugins

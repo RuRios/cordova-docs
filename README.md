@@ -1,6 +1,7 @@
-<!--
-    https://svn.apache.org/repos/asf/cordova/site cordova-website
--->
+Introduction
+============
+
+This repository contains the source code behind [cordova.io](http://cordova.io) and some of its subdomains (namely, [docs.cordova.io](http://docs.cordova.io) and [plugins.cordova.io](http://plugins.cordova.io)).
 
 Installing
 ==========
@@ -21,6 +22,10 @@ On Windows, follow these steps:
 1. Run this downloaded file.
     1. Use the following extraction path: `C:\Ruby22DevKit`.
 1. Open `cmd.exe`
+    1. Go to the extraction path:
+
+            cd C:\Ruby22DevKit
+
     1. Run these commands (following any instructions they give):
 
             ruby dk.rb init
@@ -48,32 +53,13 @@ Verify the installation by running:
     node --version
     npm --version
 
-## Python and YAML
-
-On Mac OS X and Linux, Python comes installed. To install the Python package manger, go to [its page][install_pip] and follow the instructions there.
-
-On Windows follow these steps:
-
-1. Go to [this website][python] and click the "Download Python 2.7.x" button.
-1. Run the downloaded file.
-    1. Use the default installation path (usually `C:\Python27`).
-    1. Make sure to check the options to install Pip, and to add Python to the system PATH environment variable (a restart of the machine may be required).
-
-***
-
-Verify the installation by running:
-
-    python --version
-    pip --version
-
 ## Dependencies
 
-Once Ruby, Python, and JavaScript are installed, install all dependencies by running:
+Once Ruby and JavaScript are installed, install all dependencies by running:
 
     gem install bundle
     bundle install
     npm install
-    pip install pyyaml
 
 On some systems, administrator privileges may be required for some of the above commands.
 
@@ -84,26 +70,61 @@ To build the whole website, run:
 
     node_modules/.bin/gulp build
 
+Developing
+==========
+
+To work on the website and see changes live, run:
+
+    node_modules/.bin/gulp
+
+That command will start a server and watch the source files, regenerating the site and refreshing the browser whenever changes are made. To make the regeneration faster, the `excludes` property in the `_dev.yml` file can be edited to only build certain files. For example, to only build the core website and not the docs, edit the properties to look like this:
+
+    exclude:
+        - static/css-src
+        - docs
+
+**NOTE**: *Please don't commit any dev-specific inclusion/exclusion modifications; keep them local to your development environment.*
+
+Deploying
+=========
+
+This section requires basic knowledge of SVN. If you do not know how to use SVN, refer to [this tutorial][svn].
+
+First, inspect `_prod.yml` to check that the correct `baseurl` is used. For pre-production deployment, it should be some non-empty folder (e.g. `"/use-the-force-luke"`), and for a production deployment it should be empty (i.e. `""`). To then build the full website, run:
+
+    gulp build --prod
+
+A folder called `build-prod` will be created, and will contain the whole website. Then, in a directory *outside* of the `cordova-docs` repository, check out the SVN repository that contains the currently deployed website by running (committer access required):
+
+    svn checkout https://svn.apache.org/repos/asf/cordova/site cordova-website
+
+Now, copy the `cordova-docs/build-prod/` directory to the corresponding directory in SVN (i.e. something like `cordova-website/public/use-the-force-luke/` for the pre-production deployment, or just `cordova-website/public/` for the production deployment):
+
+    cp -R cordova-docs/build-prod/ cordova-website/public/use-the-force-luke/
+
+Finally, go into the cordova-website directory and commit *all* the changes introduced the newly copied files. The commit might take a while (upwards of 30min), depending on the number of files copied.
+
+Adding a Tool or a Sample App
+=============================
+
+To add an item to the **Codorva Tools** or **Sample Cordova Apps** sections on the main page, follow these steps:
+
+1. Change the section's YAML file:
+    - `www/_data/tools.yml` for Cordova Tools, or
+    - `www/_data/sample-apps.yml` for Sample Cordova Apps.
+1. Optionally add an image (the image must be **less than 256KiB** in size):
+    1. Place the image it in the `img` directory:
+        - `www/static/img/tools` for Cordova Tools, or
+        - `www/static/img/sample-apps` for Sample Cordova Apps.
+    1. Set the `image` field in the YAML file to be just the image file's *name*.
+1. Submit a GitHub pull request with the changes.
+
 Troubleshooting
 ===============
 
 Ask for help on the IRC channel: #cordova on irc.freenode.net.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+***
 
 Writing a Blog Post
 ===================
@@ -213,16 +234,10 @@ _Alternative steps (if post-review tool fails)_
     a. Add the group `cordova`
     a. Click `publish`
 
-
-How to deploy the website
--------------------------
-
-Take the `public` directory, copy it to SVN, and commit it.
-
 [ruby_linux]: https://www.ruby-lang.org/en/documentation/installation/#package-management-systems
 [homebrew]: http://brew.sh/
 [linux_node]: https://nodesource.com/blog/nodejs-v012-iojs-and-the-nodesource-linux-repositories#installing-node-js-v0-12
 [install_ruby]: http://rubyinstaller.org/downloads/
 [nodejs]: https://nodejs.org/
 [install_pip]: https://pip.pypa.io/en/latest/installing.html
-[python]: https://www.python.org/downloads/
+[svn]: http://svnbook.red-bean.com/en/1.7/svn.intro.quickstart.html

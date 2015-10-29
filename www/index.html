@@ -1,69 +1,225 @@
 ---
 layout: cordova
 title: Apache Cordova
+permalink: /
 ---
 
+<!-- REMOVE THIS LINK BEFORE PUBLISHING.  This is just for IntelliSense while coding -->
+<!-- <link rel="stylesheet" type="text/css" href="static/css/lib/bootstrap.css"/> -->
 
-
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div id="hero">
-      <div class="container">
-        <div id="hero_section">
-            <div id="hero_section_left">
-                <img src="{{ site.baseurl }}/static/img/cordova_bot.png" style="width:100%"/>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div id="hero">
+    <div class="container vertical-center-parent">
+        <div id="hero_section" class="vertical-center-child">
+            <div id="hero_section_left" class="hidden-xs">
+                <img src="{{ site.baseurl }}/static/img/cordova_bot.png" style="width:100%" />
             </div>
             <div id="hero_section_right">
-                <img id="hero_logo" src="{{ site.baseurl }}/static/img/logo_text.svg"/>
+                <img class="hero_logo hidden-xs" src="{{ site.baseurl }}/static/img/logo_text.svg" />
+                <!-- <img class="hero_logo visible-xs" src="{{ site.baseurl }}/static/img/logo_full_2.svg" /> -->
                 <p>Native mobile apps with HTML, CSS & JavaScript</p>
                 <p>Target multiple platforms with one code base</p>
                 <p>Free and open source</p>
+                <div>
+                    <img src="{{ site.baseurl }}/static/img/platform-logos.svg" width="188px" /><a href="#supported_platforms_section" class="platforms_more">+4 more...</a>
+                </div>
+                <div>
+                    <a href="#getstarted" class="btn btn-lg btn-primary">
+                        Get Started
+                    </a>
+                    <a href="{{ site.baseurl }}/docs/en/edge" class="btn btn-lg btn-primary">
+                        Documentation
+                    </a>
+                </div>
             </div>
         </div>
+    </div>
+    <div id="hero_bottom_strip">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="row">
+                        <div class="col-sm-4 col-md-3"><div class="sprite_img" id="sprite_shared_code"></div></div>
+                        <div class="col-sm-8 col-md-9"><div class="value_prop"><p>100% shared code across platforms</p></div></div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="row">
+                        <div class="col-sm-4 col-md-3"><div class="sprite_img" id="sprite_offline"></div></div>
+                        <div class="col-sm-8 col-md-9"><div class="value_prop"><p>Support for offline scenarios</p></div></div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="row">
+                        <div class="col-sm-4 col-md-3"><div class="sprite_img" id="sprite_apis"></div></div>
+                        <div class="col-sm-8 col-md-9"><div class="value_prop"><p>Access native Device APIs</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="blue-divider"></div>
+<div class="container get-started-section">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a id="getstarted" name="getstarted" class="fragment-anchor"></a>
+            <h1>Get Started Fast</h1>
+        </div>
+    </div>
+    <!-- GETTING STARTED -->
+    <div class="row">
+        <div class="col-md-1">
+            <div class="number_circle">1</div>
+        </div>
+        <div class="col-md-7">
+            <h2>Installing Cordova</h2>
+            <p>Cordova command-line runs on <a href="http://nodejs.org/">Node.js</a> and available on <a href="https://npmjs.org/package/cordova">NPM</a>. Follow <a href="{{ site.baseurl }}/docs/en/edge/guide_platforms_index.md.html#Platform%20Guides">platform specific guides</a> to install additional platform dependencies. Open a command prompt or Terminal, and type <code>npm install -g cordova</code></p>
+        </div>
+        <div class="col-md-4">
+            <div class="well_code">
+                <div>
+                    <button type="button" class="btn btn btn-primary pull-right">Copy</button>
+                </div>
+                $ npm install -g cordova
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+            <div class="number_circle">2</div>
+        </div>
+        <div class="col-md-7">
+            <h2>Create a project</h2>
+            <p>Create a Cordova project using the command-line tool to create a blank project.  Navigate to the directory where to create your project and type <code>cordova create &lt;PATH&gt;</code></p>
+            <p>For a complete set of options, type cordova help create</p>
+        </div>
+        <div class="col-md-4">
+            <div class="well_code">
+                <div>
+                    <button type="button" class="btn btn btn-primary pull-right">Copy</button>
+                </div>
+                $ cordova create MyApp
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+            <div class="number_circle">3</div>
+        </div>
+        <div class="col-md-7">
+            <h2>Add a platform</h2>
+            <p>After creating a Cordova project, navigate to the project directory.  From the project directory, you need to add a platform you want to build your app.</p>
+            <p>To add platform, type <code>cordova platform add &lt;platform name&gt;</code>.</p>
+            <p>For a complete list of platforms you can add, run <code>cordova platform</code></p>
+        </div>
+        <div class="col-md-4">
+            <div class="well_code">
+                <div>
+                    <button type="button" class="btn btn btn-primary pull-right">Copy</button>
+                </div>
+                <p>$ cd MyApp</p>
+                <p>$ cordova platform add browser</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+            <div class="number_circle">4</div>
+        </div>
+        <div class="col-md-7">
+            <h2>Run your app</h2>
+            <p>From the command line, run <code>cordova run &lt;platform name&gt;</code>.</p>
+            <p>You can replace browser with the platform that you would like to run (e.g. iOS, Android, Windows)</p>
+        </div>
+        <div class="col-md-4">
+            <div class="well_code">
+                <div>
+                    <button type="button" class="btn btn btn-primary pull-right">Copy</button>
+                </div>
+                $ cordova run browser
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+            <div class="number_circle">5</div>
+        </div>
+        <div class="col-md-7">
+            <h2>Common next steps</h2>
+            <ul class="nav">
+                <li><a href="{{ site.baseurl }}/docs/en/edge/index.html">Read the docs</a></li>
+                <li><a href="{{ site.baseurl }}/docs/en/edge/guide_cli_index.md.html">Add a Plugin</a></li>
+                <li><a href="{{ site.baseurl }}/docs/en/edge/config_ref_index.md.html">Add Icons and Splash Screen</a></li>
+                <li><a href="{{ site.baseurl }}/docs/en/edge/config_ref_images.md.html">Configure Your App</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>
+<!-- /container -->
 
-      </div>
-      <div id="hero_bottom_strip">
-          <div class="container">
-              <div class="row">
-                  <div class="col-xs-4">100% shared code across platforms</div>
-                  <div class="col-xs-4">Support for offline scenarios</div>
-                  <div class="col-xs-4">Access native device APIs</div>
-              </div>
-          </div>
-      </div>
+<div class="blue-divider"></div>
+<div class="container-fluid dark vertical-aligned-columns">
+    <div class="container">
+        <div class="row showcase_section_intro" id="supported_platforms_section">
+            <div class="col-md-12 text-center">
+                <h1>Supported Platforms</h1>
+                <h2>See a list of
+                    <a href="#">features supported</a> in each platform</h2>
+                <p>
+                    Cordova wraps your HTML/JavaScript app into a native container which can access the device functions of several platforms.
+                    These functions are exposed via a unified JavaScript API, allowing you to easily write one set of code to target nearly every
+                    phone or tablet on the market today and publish to their app stores.
+                </p>
+            </div>
+        </div>
+    </div><!-- /container -->
+
+    <div class="container-fluid supported_platforms vertical-aligned-columns">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="platform_logos">
+                        <li><img src="{{ site.baseurl }}/static/img/3rdparty_logo_sprite.svg"/></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-      </div>
+    {% include tools_and_samples.html %}
 
-      <hr>
+</div><!-- /container-fluid -->
 
-      <footer>
-        <p>&copy; Company 2014</p>
-      </footer>
-    </div> <!-- /container -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+<script>
+        //Smooth scroll to anchor links
+    	$("#navbar ul li a[href^='/#']").on('click', function(e) {
+		// prevent default anchor click behavior
+		console.log('Scrolled to where you asked');
+		e.preventDefault();
 
+		// store hash
+		var hash = this.hash;
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+		// animate
+		$('html, body').animate({
+			scrollTop: $(hash).offset().top
+			}, 300, function(){
+
+			// when done, add hash to url
+			// (default click behaviour)
+			window.location.hash = hash;
+			});
+
+	});
+</script>

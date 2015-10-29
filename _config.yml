@@ -7,8 +7,9 @@ url:         "http://cordova.apache.org" # the base hostname & protocol
 baseurl:     "" # the subpath of the site, e.g. /blog/
 rss_path:    /feed.xml
 
+excerpt_separator: <!--more-->
 repo:
-    uri:    https://github.com/apache/cordova-docs/
+    uri:    https://github.com/apache/cordova-docs
     branch: cordova-website
 
 # NOTE: defaults are configured in _defaults.yml, which is a generated file
@@ -17,31 +18,21 @@ repo:
 # Build settings
 # =======
 source:      www
-destination: public
+destination: build-dev
 
-keep_files:  ['.git', '.svn', 'docs', 'wiki-images', 'static', 'images', 'downloads']
+keep_files: [".git", ".svn", "wiki-images", "images", "downloads"]
 
 lsi: false
 safe: true
 highlighter: pygments
 
-markdown: rdiscount
+markdown: kramdown
 rdiscount:
   extensions:
     - autolink
     - footnotes
     - smart
 
+# exclude directories from the build
 exclude:
     - static/css-src
-    # - docs/de/
-    # - docs/en/
-    # - docs/es/
-    # - docs/fr/
-    # - docs/it/
-    # - docs/ja/
-    # - docs/ko/
-    # - docs/pl/
-    # - docs/ru/
-    # - docs/sl/
-    # - docs/zh/

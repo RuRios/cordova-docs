@@ -1,0 +1,164 @@
+.plugins_search_container {
+	max-width:405px;
+	margin:auto;
+	.input-group {
+		width:100%;
+	}
+}
+
+.whatisplugin_box {
+	margin-top:20px;
+	img {
+		float:left;
+		    padding-right: 20px;
+			padding-bottom: 20px;
+		    width: 84px;
+	}
+}
+.plugins_links {
+	max-width: 405px;
+	margin:auto;
+}
+.progress {
+	width:12%;
+	margin:0;
+}
+.featured-list-header{
+	margin-top:0;
+}
+.well.featured-list {
+	padding:0;
+	h2 { text-align: center; }
+	ul {
+		list-style: none;
+		padding-left:0;
+		div { display:inline-block; }
+		li {
+			padding-left:19px;
+			padding-right:19px;
+			padding-top:5px;
+			height:33px;
+		}
+		li:nth-child(odd) {
+			background-color:$gray-20;
+		}
+	}
+}
+.plugin {
+	position:absolute;
+	left:126px;
+}
+.plugin-stats {
+	position: absolute;
+	right:0;
+	width:100px;
+}
+.filter-by-platforms {
+	margin-top:40px;
+	margin-bottom:10px;
+}
+
+.filter-by-platform-label {
+	line-height:40px;
+	vertical-align: top;
+}
+
+.filter-by-platform-filters {
+	display: inline-block;
+	button.btn {
+		&.btn-primary {
+			background-color: $brand-primary;
+		}
+		&.btn-default {
+			background-color: $gray-10;
+			&:hover {
+				background-color: $brand-primary;
+			}
+		}
+	}
+}
+
+.nav-pills > li > a {
+	background-color:$gray-5;
+}
+
+.nav > li > a:hover {
+	background-color:$gray-10;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+	background-color:$brand-primary;
+	color:black;
+}
+
+.plugins-sort-dropdown {
+	height:40px;
+	margin-top:40px;
+}
+
+/***
+****	Plugins Results
+****
+*/
+
+.plugins-results-container {
+	margin-bottom:40px;
+	padding:0;
+}
+.plugin-results-result {
+	margin-bottom:20px;
+	background-color:$gray-5;
+	position: relative;
+	.plugin-npm-command {
+		width:0px;
+		height:0px;
+		overflow:hidden;
+	}
+}
+.version_and_author {
+	display: inline-block;
+}
+
+.plugins-copy-to-clipboard {
+	width:15px;
+	position:absolute;
+	right:0;
+	top:20px;
+	margin-right:10px;
+}
+
+@media (min-width: 767px) {
+	.version_and_author {
+	float:right;
+	margin-top:20px;
+	}
+	h2 { display: inline-block }
+}
+.license { font-weight: bold }
+hr.results-divider-line {
+	border-color:$gray-20;
+}
+
+.results-supported-platforms {
+                list-style: none;
+                padding:0;
+                margin-bottom:0;
+}
+.results-supported-platforms li {
+                display: inline-block;
+}
+.results-supported-platforms > li > div {
+                background-image:url('{{ site.baseurl }}/static/img/platform-logos-all-sprite.svg');
+                width:50px;
+                height:50px;
+                display:inline-block;
+                background-size: 400px 50px;
+}
+.android { background-position: 0 }
+.ios { background-position: 14.3%; }
+.windows { background-position: 28.6%; }
+.blackberry { background-position: 42.9%; }
+.ubuntu { background-position: 57.1%; }
+.firefox { background-position: 71.4%; }
+.webos { background-position: 85.7%; }
+.fireos { background-position: 100%; }
